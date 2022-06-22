@@ -20,7 +20,15 @@ jobs:
         username: deploy
         password: YMTV2S6argbp
         port: 22
-        run: |
+        envs: TEST_CONFIG,PROJECT_ROOT
+        script: |
           echo $TEST_CONFIG
           echo $PROJECT_ROOT
+          cd $PROJECT_ROOT
+          pwd
+          npm install
+          cp -r $CONFIG/. ./
+          npm run build
+          npm run start:test
+          echo "Basic setup tested successfully" && sleep 2
           
