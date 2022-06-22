@@ -28,7 +28,7 @@ jobs:
           pwd
           git pull origin develop
           git status
-          cp ./$TEST_CONFIG ./  
+          cp $TEST_CONFIG ./  
           npm install
           npm run build
           npm run start:test
