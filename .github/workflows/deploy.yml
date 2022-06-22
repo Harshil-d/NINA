@@ -20,6 +20,7 @@ jobs:
         username: deploy
         password: YMTV2S6argbp
         port: 22
-        run: echo $TEST_CONFIG
-        run: echo $PROJECT_ROOT
+        run: |
+          echo $TEST_CONFIG
+          echo $PROJECT_ROOT
           
