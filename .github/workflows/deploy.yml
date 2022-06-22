@@ -22,7 +22,9 @@ jobs:
         password: YMTV2S6argbp
         port: 22
         script: |
+          echo $CONFIG
           cd $PROJECT_ROOT
+          pwd
           npm install
           cp -r $CONFIG/. ./
           npm run build
