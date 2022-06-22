@@ -6,12 +6,11 @@ on:
 
 env:
   PROJECT_ROOT: '/var/www/NINA/'
+  TEST_CONFIG: '/var/.deploy_configs/NINA/test'
     
 jobs:
   job_one:
     name: testing
-    env:
-      CONFIG: '/var/.deploy_configs/NINA/test'
     runs-on: ubuntu-latest
     steps:
     - name: testing server ssh connection
@@ -22,7 +21,8 @@ jobs:
         password: YMTV2S6argbp
         port: 22
         script: |
-          echo $CONFIG
+          echo $TEST_CONFIG
+          echo $PROJECT_ROOT
           cd $PROJECT_ROOT
           pwd
           npm install
