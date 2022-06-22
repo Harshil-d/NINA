@@ -5,7 +5,7 @@ on:
     branches: [ develop ]
 
 env:
-  PROJECT_ROOT: '/var/www/NINA/'
+  PROJECT_ROOT: '/var/www/NINA'
   TEST_CONFIG: '/var/.deploy_configs/NINA/test'
     
 jobs:
@@ -22,8 +22,7 @@ jobs:
         port: 22
         envs: TEST_CONFIG,PROJECT_ROOT
         script: |
-          echo $TEST_CONFIG
-          echo $PROJECT_ROOT
+          source ~/.profile
           cd $PROJECT_ROOT
           pwd
           npm install
