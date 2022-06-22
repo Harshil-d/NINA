@@ -5,13 +5,13 @@ on:
     branches: [ develop ]
 
 env:
-  PROJECT_ROOT: /var/www/NINA/
+  PROJECT_ROOT: '/var/www/NINA/'
     
 jobs:
   job_one:
     name: testing
     env:
-      CONFIG: /var/.deploy_configs/NINA/test
+      CONFIG: '/var/.deploy_configs/NINA/test'
     runs-on: ubuntu-latest
     steps:
     - name: testing server ssh connection
@@ -23,7 +23,6 @@ jobs:
         port: 22
         script: |
           cd $PROJECT_ROOT
-          script:
           npm install
           cp -r $CONFIG/. ./
           npm run build
