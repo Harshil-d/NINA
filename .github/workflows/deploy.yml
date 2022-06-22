@@ -1,11 +1,17 @@
 name: Deployment Workflow
+
 on: 
   push:
     branches: [ develop ]
+
+env:
+  PROJECT_ROOT: /var/www/NINA/
     
 jobs:
   job_one:
-    name: Deploy
+    name: testing
+    env:
+      CONFIG: /var/.deploy_configs/NINA/test
     runs-on: ubuntu-latest
     steps:
     - name: testing server ssh connection
@@ -16,7 +22,11 @@ jobs:
         password: YMTV2S6argbp
         port: 22
         script: |
-          cd /var/www/NINA/
-          git pull origin develop
-          git status
+          cd $PROJECT_ROOT
+          script:
+          npm install
+          cp -r $CONFIG/. ./
+          npm run build
+          npm run start:test
+          echo "Basic setup tested successfully" && sleep 2
           
