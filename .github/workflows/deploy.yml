@@ -1,0 +1,22 @@
+name: Deployment Workflow
+on: 
+  push:
+    branches: [ develop ]
+    
+jobs:
+  job_one:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: testing server ssh connection
+      uses: appleboy/ssh-action@master
+      with:
+        host: 13.235.184.34
+        username: deploy
+        password: YMTV2S6argbp
+        port: 22
+        script: |
+          cd /var/www/NINA/
+          git pull origin develop
+          git status
+          
