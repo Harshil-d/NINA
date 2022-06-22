@@ -27,7 +27,6 @@ jobs:
           cd $PROJECT_ROOT
           pwd
           npm install
-          cp -r $CONFIG/. ./
           npm run build
           npm run start:test
           echo "Basic setup tested successfully" && sleep 2
