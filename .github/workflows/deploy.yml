@@ -20,11 +20,15 @@ jobs:
         username: deploy
         password: YMTV2S6argbp
         port: 22
+        script_stop: true
         envs: TEST_CONFIG,PROJECT_ROOT
         script: |
           source ~/.profile
           cd $PROJECT_ROOT
           pwd
+          git pull origin develop
+          git status
+          cp ./$TEST_CONFIG ./  
           npm install
           npm run build
           npm run start:test
