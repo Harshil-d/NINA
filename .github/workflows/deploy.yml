@@ -11,14 +11,26 @@ env:
 jobs:
   job_one:
     name: testing
-    runs-on: self-hosted
+    runs-on: nina-project-runner
     steps:
     - uses: actions/checkout@v3
-    - name: testing server ssh connection
+    - name: install packages
       run: |
         npm install
         npm i cross-env
+    - uses: actions/checkout@v3
+    - name: build and run
+      run: |
         npm run build
         npm run start:test
         echo "Basic setup tested successfully" && sleep 2
+  job_two:
+    name: deploying
+    runs-on: nina-project-runner
+    steps:
+    - uses: actions/checkout@v3
+    - name: install packages
+      run: |
+        npm install
+        npm i cross-env
           
