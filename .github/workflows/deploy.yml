@@ -9,8 +9,8 @@ env:
   TEST_CONFIG: '/var/.deploy_configs/NINA/test'
     
 jobs:
-  job_one:
-    name: Deploy on dev server
+  test:
+    name: test
     runs-on: self-hosted
     steps:
     - uses: actions/checkout@v3
@@ -21,6 +21,12 @@ jobs:
         npm run build
         npm run start:test
         echo "Basic setup tested successfully" && sleep 2
+  deploy:
+    name: deploy
+    needs: test
+    runs-on: self-hosted
+    steps:
+    - uses: actions/checkout@v3
     - name: deploy
       run: |
         npm run build
