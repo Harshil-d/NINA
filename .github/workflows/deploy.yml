@@ -11,7 +11,7 @@ env:
 jobs:
   job_one:
     name: testing
-    runs-on: nina-project-runner
+    runs-on: [self-hosted, nina-project-runner]
     steps:
     - uses: actions/checkout@v3
     - name: install packages
@@ -26,7 +26,7 @@ jobs:
         echo "Basic setup tested successfully" && sleep 2
   job_two:
     name: deploying
-    runs-on: nina-project-runner
+    runs-on: [self-hosted, nina-project-runner]
     steps:
     - uses: actions/checkout@v3
     - name: install packages
