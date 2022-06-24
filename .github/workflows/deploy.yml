@@ -17,6 +17,7 @@ jobs:
     - name: testing server ssh connection
       run: |
         npm install
+        npm i cross-env
         npm run build
         npm run start:test
         echo "Basic setup tested successfully" && sleep 2
